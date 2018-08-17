@@ -1,0 +1,13 @@
+inherit_from:
+  - https://raw.githubusercontent.com/cookpad/global-style-guides/master/.rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 5.2
+  Exclude:
+    - config/unicorn/**/*
+    - db/schema.rb
+    - db/migrate/*
+    - vendor/**/*
+    - node_modules/**/*
+    - config/deploy.rb

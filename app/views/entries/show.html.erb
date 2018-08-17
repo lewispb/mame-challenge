@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Twitter handle:</strong>
+  <%= @entry.twitter_handle %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @entry.name %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @entry.event %>
+</p>
+
+<p>
+  <strong>Timing:</strong>
+  <%= @entry.timing %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
