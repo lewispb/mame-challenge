@@ -5,11 +5,23 @@ html, body {
 }
 
 body {
-   background-image: linear-gradient(to right bottom, #ff7a00, #fe9631, #feaf56, #fec57a, #ffdaa1);
+  background-image: linear-gradient(to left bottom, #ff0085, #ff3464, #ff5946, #fd7a2a, #eb9612);
+}
+
+.container {
+  max-width: 800px;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.header {
+  text-align: center;
+  img {
+    margin: 30px auto;
+    max-width: 300px;
+  }
 }
 
 #entryForm {
-  max-width: 800px;
   padding-top: 40px;
   margin: 0 auto;
 

@@ -3,14 +3,16 @@ import ReactDOM from 'react-dom'
 import axios from 'axios';
 import Stopwatch from './entry_form/stopwatch'
 
+import 'bootstrap'
+
 class EntryForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { twitter_handle: "", name: "", timing: 0, nameClass: "hidden", twitterClass: "" }
+    this.state = { twitter_handle: "", name: "", timing: 0, nameClass: "hidden", twitterClass: "", uniqueId: 1 }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleTimingChange = this.handleTimingChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this)
+    this.handleTimingChange = this.handleTimingChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
@@ -30,8 +32,9 @@ class EntryForm extends React.Component {
 
     axios.post(Routes.entries_path(), { entry })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
+        $('#successModal').modal()
+        this.setState({ uniqueId: Math.floor(Math.random() * 100000) + 1 })
+        console.log('Finish')
       })
 
     event.preventDefault();
@@ -39,24 +42,22 @@ class EntryForm extends React.Component {
 
   render() {
     return (
-      <div class="container">
-        <form onSubmit={this.handleSubmit}>
-          <div class="row">
-            <div class="col">
-              <input name="twitter_handle" type="text" placeholder="@yourname" onChange={this.handleChange} className={this.state.twitterClass} />
-              <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} className={this.state.nameClass} />
-            </div>
+      <form onSubmit={this.handleSubmit} key={this.state.uniqueId}>
+        <div className="row">
+          <div className="col">
+            <input name="twitter_handle" type="text" placeholder="@yourname" onChange={this.handleChange} className={this.state.twitterClass} />
+            <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} className={this.state.nameClass} />
           </div>
+        </div>
 
-          <Stopwatch handleTimingFunction={this.handleTimingChange} />
+        <Stopwatch handleTimingFunction={this.handleTimingChange} />
 
-          <div class="row">
-            <div class="col">
-              <input type="submit" value="Enter!" />
-            </div>
+        <div className="row">
+          <div className="col">
+            <input type="submit" value="Enter!" />
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }
