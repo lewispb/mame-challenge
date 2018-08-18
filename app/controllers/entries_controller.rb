@@ -6,13 +6,12 @@ class EntriesController < ApplicationController
 
   def create
     @entry = Entry.new(entry_params)
+    @entry.event = Event.current
 
     respond_to do |format|
       if @entry.save
-        format.html { redirect_to @entry, notice: "Entry was successfully created." }
-        format.json { render :show, status: :created, location: @entry }
+        format.json { render json: {}, status: :created }
       else
-        format.html { render :new }
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
@@ -21,6 +20,6 @@ class EntriesController < ApplicationController
   private
 
     def entry_params
-      params.require(:entry).permit(:twitter_handle, :name, :event_id, :timing)
+      params.require(:entry).permit(:name, :twitter_handle, :timing)
     end
 end

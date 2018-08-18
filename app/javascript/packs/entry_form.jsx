@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios';
 import Stopwatch from './entry_form/stopwatch'
 
 class EntryForm extends React.Component {
@@ -21,7 +22,20 @@ class EntryForm extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.name + ' : ' + this.state.timing);
+    console.log('A name was submitted: ' + this.state.name + ' : ' + this.state.timing);
+
+    const entry = {
+      twitter_handle: this.state.twitter_handle,
+      name: this.state.name,
+      timing: this.state.timing
+    };
+
+    axios.post(Routes.entries_path(), { entry })
+      .then(res => {
+        console.log(res);
+        console.log(res.data);
+      })
+
     event.preventDefault();
   }
 
@@ -38,6 +52,11 @@ class EntryForm extends React.Component {
     );
   }
 }
+
+axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+};
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
