@@ -22,7 +22,7 @@ body {
     @extend .btn;
     @extend .btn-lg;
     @extend .btn-dark;
-
+    margin-top: 35px;
     float: right;
   }
 
@@ -33,6 +33,7 @@ body {
 
   .stopwatch {
     margin-top: 40px;
+
     .runningTime {
       font-size: 80px;
     }
