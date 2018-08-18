@@ -1,0 +1,53 @@
+@import '~bootstrap/scss/bootstrap';
+
+html, body {
+  height: 100%;
+}
+
+body {
+   background-image: linear-gradient(to right bottom, #ff7a00, #fe9631, #feaf56, #fec57a, #ffdaa1);
+}
+
+#entryForm {
+  max-width: 800px;
+  padding-top: 40px;
+  margin: 0 auto;
+
+  input[type=text] {
+    @extend .form-control;
+    @extend .form-control-lg;
+  }
+
+  input[type=submit] {
+    @extend .btn;
+    @extend .btn-lg;
+    @extend .btn-dark;
+
+    float: right;
+  }
+
+  button {
+    @extend .btn;
+    @extend .btn-lg;
+  }
+
+  .stopwatch {
+    margin-top: 40px;
+    .runningTime {
+      font-size: 80px;
+    }
+    
+    .controls {
+      text-align: right;
+      padding-top: 35px;
+
+      .startstop {
+        padding: 0.5rem 2rem;
+      }
+    }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+}

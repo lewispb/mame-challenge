@@ -40,10 +40,14 @@ class Stopwatch extends React.Component {
   render() {
     const { status, runningTime } = this.state;
     return (
-      <div>
-        <p>{runningTime}ms</p>
-        <button onClick={this.handleClick}>{status ? 'Stop' : 'Start'}</button>
-        <button onClick={this.handleReset}>Reset</button>
+      <div className="row stopwatch">
+        <div className="col-md-6">
+          <p className="runningTime">{parseFloat(runningTime / 1000).toFixed(3)}s</p>
+        </div>
+        <div className="col-md controls">
+          <button className="btn-link" onClick={this.handleReset}>Reset</button>
+          <button className={'startstop ' + (status ? 'btn-danger' : 'btn-success')} onClick={this.handleClick}>{status ? 'Stop' : 'Start'}</button>
+        </div>
       </div>
     )
   }

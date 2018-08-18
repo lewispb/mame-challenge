@@ -6,7 +6,7 @@ import Stopwatch from './entry_form/stopwatch'
 class EntryForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { twitter_handle: '', name: '', timing: 0}
+    this.state = { twitter_handle: "", name: "", timing: 0, nameClass: "hidden", twitterClass: "" }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleTimingChange = this.handleTimingChange.bind(this);
@@ -22,8 +22,6 @@ class EntryForm extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log('A name was submitted: ' + this.state.name + ' : ' + this.state.timing);
-
     const entry = {
       twitter_handle: this.state.twitter_handle,
       name: this.state.name,
@@ -41,14 +39,24 @@ class EntryForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input name="twitter_handle" type="text" placeholder="@yourname" onChange={this.handleChange} />
-        <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} />
+      <div class="container">
+        <form onSubmit={this.handleSubmit}>
+          <div class="row">
+            <div class="col">
+              <input name="twitter_handle" type="text" placeholder="@yourname" onChange={this.handleChange} className={this.state.twitterClass} />
+              <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} className={this.state.nameClass} />
+            </div>
+          </div>
 
-        <Stopwatch handleTimingFunction={this.handleTimingChange} />
+          <Stopwatch handleTimingFunction={this.handleTimingChange} />
 
-        <input type="submit" value="Submit" />
-      </form>
+          <div class="row">
+            <div class="col">
+              <input type="submit" value="Enter!" />
+            </div>
+          </div>
+        </form>
+      </div>
     );
   }
 }

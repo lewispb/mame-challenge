@@ -4,8 +4,9 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
-    "babel-preset-react": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "bootstrap": "^4.1.3",
     "es2015": "^0.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
