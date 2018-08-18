@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   def index
-    @entry = Entry.new
-    @entries = Entry.all
+    @entries = Entry.best_score_first
+    @entries = Entry.random if params[:random]
   end
 
   def create
@@ -15,6 +15,12 @@ class EntriesController < ApplicationController
         format.json { render json: @entry.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    Entry.find(params[:id]).destroy
+
+    redirect_to entries_path
   end
 
   private

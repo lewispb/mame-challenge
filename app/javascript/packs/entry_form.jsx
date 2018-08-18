@@ -8,22 +8,52 @@ import 'bootstrap'
 class EntryForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { twitter_handle: "", name: "", timing: 0, nameClass: "hidden", twitterClass: "", uniqueId: 1 }
+    this.state = {
+      twitter_handle: "",
+      name: "",
+      timing: 0,
+      nameClass: "hidden",
+      twitterClass: "",
+      uniqueId: 1,
+      formValid: false
+    }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleTimingChange = this.handleTimingChange.bind(this)
+    this.handleToggleInput = this.handleToggleInput.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value });
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({[name]: value}, 
+                  () => { this.validateForm() });
   }
 
   handleTimingChange(timing) {
     this.setState({ timing: timing })
   }
 
+
+  handleToggleInput(event) {
+    event.preventDefault();
+
+    if(this.state.nameClass == "hidden") {
+      this.setState({ nameClass: "", twitterClass: "hidden" })
+    } else {
+      this.setState({ nameClass: "hidden", twitterClass: "" })
+    }
+  }
+
   handleSubmit(event) {
+    event.preventDefault();
+
+    if(!this.state.formValid) {
+      console.log("Invalid")
+      return;
+    }
+
     const entry = {
       twitter_handle: this.state.twitter_handle,
       name: this.state.name,
@@ -36,8 +66,10 @@ class EntryForm extends React.Component {
         this.setState({ uniqueId: Math.floor(Math.random() * 100000) + 1 })
         console.log('Finish')
       })
+  }
 
-    event.preventDefault();
+  validateForm() {
+    this.setState({ formValid: (this.state.twitter_handle.length != 0 || this.state.name.length != 0) })
   }
 
   render() {
@@ -45,8 +77,9 @@ class EntryForm extends React.Component {
       <form onSubmit={this.handleSubmit} key={this.state.uniqueId}>
         <div className="row">
           <div className="col">
-            <input name="twitter_handle" type="text" placeholder="@yourname" onChange={this.handleChange} className={this.state.twitterClass} />
+            <input name="twitter_handle" type="text" placeholder="@your_twitter_name" onChange={this.handleChange} className={this.state.twitterClass} />
             <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} className={this.state.nameClass} />
+            <p>{ this.state.formValid ? '' : 'Required' }</p>
           </div>
         </div>
 
@@ -54,7 +87,8 @@ class EntryForm extends React.Component {
 
         <div className="row">
           <div className="col">
-            <input type="submit" value="Enter!" />
+            <button className="btn-link toggleInput" onClick={this.handleToggleInput}>♺</button>
+            <input disabled={!this.state.formValid} type="submit" value="Enter!" />
           </div>
         </div>
       </form>

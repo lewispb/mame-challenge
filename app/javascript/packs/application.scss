@@ -5,6 +5,8 @@ html, body {
 }
 
 body {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   background-image: linear-gradient(to left bottom, #ff0085, #ff3464, #ff5946, #fd7a2a, #eb9612);
 }
 
@@ -26,6 +28,23 @@ body {
     margin: 30px auto;
     max-width: 300px;
   }
+  .btn {
+    margin-top: 10px;
+    position: relative;
+    top: 50px;
+  }
+}
+
+.table {
+  margin-top: 20px;
+  font-size: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  th, td {
+    border-top: 0;
+  }
 }
 
 #entryForm {
@@ -43,11 +62,13 @@ body {
     @extend .btn-dark;
     margin-top: 35px;
     float: right;
+    color: #fff;
   }
 
   button {
     @extend .btn;
     @extend .btn-lg;
+    color: #fff;
   }
 
   .stopwatch {
@@ -65,6 +86,12 @@ body {
         padding: 0.5rem 2rem;
       }
     }
+  }
+
+  .toggleInput {
+    position: absolute;
+    bottom: 0;
+    opacity: 0.1;
   }
 
   .hidden {
