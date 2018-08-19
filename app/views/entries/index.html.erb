@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row header">
     <div class="col-9">
-      <%= image_tag "cookpad" %>
+      <%= link_to image_tag("cookpad"), root_path %>
       <h1>Mame Challenge</h1>
     </div>
     <div class="col">
@@ -13,14 +13,6 @@
   <div class="row">
     <div class="col">
       <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Timing</th>
-            <th></th>
-          </tr>
-        </thead>
-
         <tbody>
           <% @entries.each do |entry| %>
             <tr>

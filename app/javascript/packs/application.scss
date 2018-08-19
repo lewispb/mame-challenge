@@ -8,10 +8,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-image: linear-gradient(to left bottom, #ff0085, #ff3464, #ff5946, #fd7a2a, #eb9612);
+  font-family: 'Source Code Pro', monospace;
 }
 
 .modal-content {
-  font-family: 'Source Code Pro', monospace;
   color: #fff;
   background: #343a40;
   * { border: 0 !important; }
@@ -19,7 +19,6 @@ body {
 
 .container {
   max-width: 800px;
-  font-family: 'Source Code Pro', monospace;
 }
 
 .header {
