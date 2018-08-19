@@ -49,6 +49,7 @@ class EntryForm extends React.Component {
     event.preventDefault();
 
     if(!this.state.formValid) { return }
+    this.setState({ formValid: false }) // Prevent double submit
 
     const entry = {
       twitter_handle: this.state.twitter_handle,
