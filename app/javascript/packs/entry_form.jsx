@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios';
 import Stopwatch from './entry_form/stopwatch'
+import axios from './axios-config'
 
 import 'bootstrap'
 
@@ -27,8 +27,7 @@ class EntryForm extends React.Component {
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
-    this.setState({[name]: value}, 
-                  () => { this.validateForm() });
+    this.setState({[name]: value}, () => { this.validateForm() });
   }
 
   handleTimingChange(timing) {
@@ -77,8 +76,18 @@ class EntryForm extends React.Component {
       <form onSubmit={this.handleSubmit} key={this.state.uniqueId}>
         <div className="row">
           <div className="col">
-            <input name="twitter_handle" type="text" placeholder="@your_twitter_name" onChange={this.handleChange} className={this.state.twitterClass} />
-            <input name="name" type="text" placeholder="Your Name" onChange={this.handleChange} className={this.state.nameClass} />
+            <input name="twitter_handle"
+                   type="text"
+                   placeholder="@your_twitter_name"
+                   autoCapitalize="none"
+                   onChange={this.handleChange}
+                   className={this.state.twitterClass} />
+            <input name="name"
+                   type="text"
+                   placeholder="Your Name"
+                   autoCapitalize="none"
+                   onChange={this.handleChange}
+                   className={this.state.nameClass} />
             <p>{ this.state.formValid ? '' : 'Required' }</p>
           </div>
         </div>
@@ -95,11 +104,6 @@ class EntryForm extends React.Component {
     );
   }
 }
-
-axios.defaults.headers.common = {
-  'X-Requested-With': 'XMLHttpRequest',
-  'X-CSRF-TOKEN' : document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-};
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
