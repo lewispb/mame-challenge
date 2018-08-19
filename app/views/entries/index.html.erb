@@ -5,7 +5,7 @@
       <h1>Mame Challenge</h1>
     </div>
     <div class="col-sm-12">
-      <% unless params[:random] %>
+      <% if !random_view? %>
         <%= link_to '⚡︎ Random', {random: "true"}, class: 'btn btn-light left' %>
       <% else %>
         <%= link_to '⌸ Leaderboard', root_path, class: 'btn btn-light left' %>
@@ -19,7 +19,7 @@
         <tbody>
           <% @entries.each.with_index(1) do |entry, i| %>
             <tr>
-              <%= params[:random] ? nil : "<td>#{i}.</td>".html_safe %>
+              <%= random_view? ? nil : "<td>#{i}.</td>".html_safe %>
               <td><%= entry.twitter_handle.presence || entry.name %></td>
               <td><%= entry.timing.to_f / 1000 %>s</td>
               <td><%= link_to 'x', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
