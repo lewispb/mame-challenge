@@ -1,13 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Stopwatch from './entry_form/stopwatch'
-import axios from './axios-config'
+import React from "react"
+import ReactDOM from "react-dom"
+import Stopwatch from "./entry_form/stopwatch"
+import axios from "./axios-config"
 
-import 'bootstrap'
+import "bootstrap"
 
 class EntryForm extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       twitter_handle: "",
       name: "",
@@ -34,7 +35,6 @@ class EntryForm extends React.Component {
     this.setState({ timing: timing })
   }
 
-
   handleToggleInput(event) {
     event.preventDefault();
 
@@ -48,10 +48,7 @@ class EntryForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    if(!this.state.formValid) {
-      console.log("Invalid")
-      return;
-    }
+    if(!this.state.formValid) { return }
 
     const entry = {
       twitter_handle: this.state.twitter_handle,
@@ -62,8 +59,7 @@ class EntryForm extends React.Component {
     axios.post(Routes.entries_path(), { entry })
       .then(res => {
         $('#successModal').modal()
-        this.setState({ uniqueId: Math.floor(Math.random() * 100000) + 1 })
-        console.log('Finish')
+        this.setState({ uniqueId: this.state.uniqueId + 1 })
       })
   }
 
@@ -88,7 +84,7 @@ class EntryForm extends React.Component {
                    autoCapitalize="none"
                    onChange={this.handleChange}
                    className={this.state.nameClass} />
-            <p>{ this.state.formValid ? '' : 'Required' }</p>
+            <p>{ this.state.formValid ? "" : "Required" }</p>
           </div>
         </div>
 
@@ -105,10 +101,10 @@ class EntryForm extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(
     <EntryForm />,
-    document.getElementById('entryForm').appendChild(document.createElement('div')),
+    document.getElementById("entryForm").appendChild(document.createElement("div")),
   )
 })
 
