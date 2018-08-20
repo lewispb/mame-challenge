@@ -10,6 +10,7 @@ class EntriesController < ApplicationController
 
     respond_to do |format|
       if @entry.save
+        TweetTimeJob.perform_later(@entry)
         format.json { render json: {}, status: :created }
       else
         format.json { render json: @entry.errors, status: :unprocessable_entity }

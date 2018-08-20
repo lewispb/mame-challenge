@@ -21,7 +21,7 @@
             <tr>
               <%= random_view? ? nil : "<td>#{i}.</td>".html_safe %>
               <td><%= entry.twitter_handle.presence || entry.name %></td>
-              <td><%= entry.timing.to_f / 1000 %>s</td>
+              <td><%= entry.timing_string %></td>
               <td><%= link_to 'x', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
