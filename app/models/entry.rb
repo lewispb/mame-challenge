@@ -13,6 +13,6 @@ class Entry < ApplicationRecord
   private
 
     def clean_twitter_handle
-      self.twitter_handle = twitter_handle.delete("^A-Za-z0-9_")
+      self.twitter_handle = twitter_handle&.delete("^A-Za-z0-9_")
     end
 end
