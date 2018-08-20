@@ -1,24 +1,6 @@
-# README
+# Mame Challenge
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![CircleCI](https://circleci.com/gh/lewispb/mame-challenge.svg?style=svg)](https://circleci.com/gh/lewispb/mame-challenge)
 
-Things you may want to cover:
+This Ruby on Rails / React app collects competition entries for the Cookpad Mame Challenge, held at Brighton Ruby 2018 and EuRuKo 2018.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
