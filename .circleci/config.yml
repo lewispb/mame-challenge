@@ -12,6 +12,10 @@ jobs:
           PGHOST: 127.0.0.1
           PGUSER: root
           RAILS_ENV: test
+          TWITTER_CONSUMER_KEY: XXXXXXXXXXXXX
+          TWITTER_CONSUMER_SECRET: XXXXXXXXXXXXX
+          TWITTER_ACCESS_TOKEN: XXXXXXXXXXXXX
+          TWITTER_ACCESS_SECRET: XXXXXXXXXXXXX
       - image: circleci/postgres:10.4-alpine
         environment:
           POSTGRES_USER: root
