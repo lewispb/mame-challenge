@@ -112,4 +112,6 @@ document.addEventListener("DOMContentLoaded", () => {
   )
 })
 
+export default EntryForm
+
 
