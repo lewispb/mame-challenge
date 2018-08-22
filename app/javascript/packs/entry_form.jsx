@@ -37,6 +37,7 @@ class EntryForm extends React.Component {
 
   handleToggleInput(event) {
     event.preventDefault();
+    this.setState({ name: "", twitter_handle: "" })
 
     if(this.state.nameClass == "hidden") {
       this.setState({ nameClass: "", twitterClass: "hidden" })
@@ -51,7 +52,7 @@ class EntryForm extends React.Component {
     if(!this.state.formValid) { return }
     this.setState({ formValid: false }) // Prevent double submit
 
-    const entry = {
+    let entry = {
       twitter_handle: this.state.twitter_handle,
       name: this.state.name,
       timing: this.state.timing

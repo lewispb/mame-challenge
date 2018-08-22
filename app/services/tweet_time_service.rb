@@ -22,6 +22,8 @@ class TweetTimeService < ApplicationService
     end
 
     def tweet
-      "@#{twitter_handle} Congratulations on your time of #{timing}! 🎉 #mamechallenge"
+      tweet = "@#{twitter_handle} Congratulations on your time of #{timing}! 🎉 #mamechallenge"
+      tweet << " #euruko2018" if (Date.parse("2018/08/24")..Date.parse("2018/08/25")).cover?(Date.current)
+      tweet
     end
 end
