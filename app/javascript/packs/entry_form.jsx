@@ -79,13 +79,15 @@ class EntryForm extends React.Component {
                    placeholder="@your_twitter_name"
                    autoCapitalize="none"
                    onChange={this.handleChange}
-                   className={this.state.twitterClass} />
+                   className={this.state.twitterClass}
+                   value={this.state.twitter_handle} />
             <input name="name"
                    type="text"
                    placeholder="Your Name"
                    autoCapitalize="none"
                    onChange={this.handleChange}
-                   className={this.state.nameClass} />
+                   className={this.state.nameClass}
+                   value={this.state.name} />
             <p>{ this.state.formValid ? "" : "Required" }</p>
           </div>
         </div>
