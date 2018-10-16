@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   def index
-    @entries = Entry.best_score_first
-    @entries = Entry.random if params[:random]
+    @entries = Entry.current.best_score_first
+    @entries = Entry.current.random if params[:random]
   end
 
   def create
