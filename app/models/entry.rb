@@ -3,7 +3,7 @@ class Entry < ApplicationRecord
 
   scope :best_score_first, -> { order(timing: :asc) }
   scope :random, -> { order("RANDOM()") }
-  scope :current, -> { joins(:event).merge(Event.current) }
+  scope :current, -> { joins(:event).where(event: Event.current) }
 
   before_save :clean_twitter_handle
 
