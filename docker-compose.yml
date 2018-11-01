@@ -21,7 +21,6 @@ services:
     volumes:
       - .:/var/www/mame-challenge
     environment:
-      - RAILS_ENV=development
       - REDIS_URL=redis://cache:6379/5
       - DATABASE_URL=postgresql://www-data:12345@db/mame-challenge_development
       - PORT=3000
