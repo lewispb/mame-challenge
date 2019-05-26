@@ -8,13 +8,18 @@ This Ruby on Rails / React app collects competition entries for the Cookpad Mame
 
 ### Install
 
-- brew install redis
-- rake db:setup
-  - This should run migrate and seed
+This project uses Postgres and Redis as dependencies, if you don't want to install it on your machine you can run `docker-compose up db cache`.
+This command will start Redis and Postgres container and forwards the ports to localhost.
 
-#### Docker setup
-There is also a docker-compose configuration which will start a postgres, redis and frontend container and starts all services.
-However, there are some parts which still need manual configuration
+To install dependencies and setup the database locally, run:
+- `cp .env.example .env`
+- `bin/setup`
+
+To start the rails server, Sidekiq worker and webpack dev server run:
+- `bundle exec foreman start -f Procfile.dev`
+
+#### Full Docker setup
+You can also run the Rails server in a container. However, there are some parts which still need manual configuration
 
 * Set your local user id in the ``docker-compose.override.yml`` file. This is needed because we mount the sources into the container
 and the user in the container can have a different user id which would cause permission problems if you change the files while
