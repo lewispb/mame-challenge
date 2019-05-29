@@ -13,6 +13,10 @@ Metrics/LineLength:
   Exclude:
     - spec/**/*
 
+Metrics/ModuleLength:
+  Exclude:
+    - spec/**/*
+
 Rails:
   Enabled: true
 
@@ -98,7 +102,7 @@ Style/EvenOdd:
 Naming/FileName:
   Enabled: false
 
-Style/FlipFlop:
+Lint/FlipFlop:
   Enabled: false
 
 Style/FormatString:
@@ -141,7 +145,7 @@ Style/ModuleFunction:
   Enabled: false
 
 Style/NegatedIf:
-  Enabled: false
+  Enabled: both
 
 Style/NegatedWhile:
   Enabled: false
@@ -150,9 +154,6 @@ Style/Next:
   Enabled: false
 
 Style/NilComparison:
-  Enabled: false
-
-Style/Not:
   Enabled: false
 
 Style/NumericLiterals:

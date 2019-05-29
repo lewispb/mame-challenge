@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/ruby:2.4.4-node-browsers
+      - image: circleci/ruby:2.6.3-node-browsers
         environment:
           PGHOST: 127.0.0.1
           PGUSER: root
@@ -25,6 +25,13 @@ jobs:
 
     steps:
       - checkout
+      
+      - run:
+          name: Configure Bundler
+          command: |
+            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
+            source $BASH_ENV
+            gem install bundler
 
       # Download and cache dependencies
       - restore_cache:
