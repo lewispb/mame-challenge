@@ -4,27 +4,9 @@ services:
     image: postgres:latest
     environment:
       - POSTGRES_PASSWORD=12345
-      - POSTGRES_USER=www-data
     ports:
       - "5432:5432"
   cache:
     image: redis
     ports:
       - "6379:6379"
-  frontend:
-    command: bash -c "rm -rf tmp/pids/server.pid && foreman start -f Procfile.dev"
-    build:
-      dockerfile: docker-files/Dockerfile
-      context: .
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/var/www/mame-challenge
-    environment:
-      - REDIS_URL=redis://cache:6379/5
-      - DATABASE_URL=postgresql://www-data:12345@db/mame-challenge_development
-      - PORT=3000
-    depends_on:
-      - db
-      - cache
-    
